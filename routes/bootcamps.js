@@ -6,18 +6,17 @@ const {
   updateBootcamp,
   deleteBootcamp,
 } = require('../controllers/bootcamps');
-const asyncCatch = require('../middleware/asyncHandler');
 
 const router = express.Router();
 
-router.get('/', asyncCatch(getBootcamps));
+router.get('/', getBootcamps);
 
-router.get('/:id', asyncCatch(getBootcamp));
+router.get('/:id', getBootcamp);
 
-router.post('/', asyncCatch(createBootcamp));
+router.post('/', createBootcamp);
 
-router.put('/:id', asyncCatch(updateBootcamp));
+router.put('/:id', updateBootcamp);
 
-router.delete('/:id', asyncCatch(deleteBootcamp));
+router.delete('/:id', deleteBootcamp);
 
 module.exports = router;
