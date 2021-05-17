@@ -23,7 +23,8 @@
     "colors": "^1.4.0",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
-    "mongoose": "^5.12.9"
+    "mongoose": "^5.12.9",
+    "slugify": "^1.5.3"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
