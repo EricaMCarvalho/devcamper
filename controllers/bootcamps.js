@@ -9,7 +9,15 @@ const geocoder = require('../util/geocoder');
 exports.getBootcamps = asyncHandler(async (req, res, next) => {
   let query;
 
-  let queryStr = JSON.stringify(req.query);
+  const reqQuery = { ...req.query };
+
+  // Fields to exclude
+  const removeFields = ['select'];
+
+  // Loop over removeFields and delete them from reqQuery
+  removeFields.forEach((param = delete reqQuery[param]));
+
+  let queryStr = JSON.stringify(reqQuery);
 
   queryStr = queryStr.replace(
     /\b(gt|gte|lt|lte|in)\b/g,
@@ -17,6 +25,13 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
   );
 
   query = Bootcamp.find(JSON.parse(queryStr));
+
+  // Select fields
+  if (req.query.select) {
+    const fields = req.query.select.split(',').join(' ');
+    // mongoose filtering
+    query = query.select(fields);
+  }
 
   const bootcamps = await query;
   res
