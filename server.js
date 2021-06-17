@@ -13,6 +13,7 @@ dotenv.config({ path: './config/config.env' });
 // Route files
 const bootcampRouter = require('./routes/bootcamps');
 const courseRouter = require('./routes/courses');
+const authRouter = require('./routes/auth');
 
 // Connect database
 connectDB();
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Mount routers
 app.use('/api/v1/bootcamps', bootcampRouter);
 app.use('/api/v1/courses', courseRouter);
+app.use('/api/v1/auth', authRouter);
 
 app.use(errorHandler);
 
