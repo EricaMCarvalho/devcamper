@@ -5,6 +5,7 @@ module.exports = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   });
   console.log(`MongoDB is connected: ${conn.connection.host}`.yellow.inverse);
 };
